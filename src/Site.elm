@@ -2,6 +2,8 @@ module Site exposing (config)
 
 import DataSource
 import Head
+import LanguageTag
+import LanguageTag.Language
 import Pages.Manifest as Manifest
 import Route
 import SiteConfig exposing (SiteConfig)
@@ -28,6 +30,7 @@ data =
 head : Data -> List Head.Tag
 head static =
     [ Head.sitemapLink "/sitemap.xml"
+    , Head.rootLanguage <| LanguageTag.build LanguageTag.emptySubtags <| LanguageTag.Language.ja
     ]
 
 
