@@ -176,7 +176,7 @@ sideBar showSideBar msg =
                                 []
                             ]
                         ]
-                    , div [ class "d-flex" ]
+                    , div [ class "d-flex mt-5" ]
                         [ div [ class "container-fluid p-4" ]
                             [ div [ class "row" ]
                                 [ div [ class "d-grid gap-2 d-block" ]
