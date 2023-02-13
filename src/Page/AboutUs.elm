@@ -15,6 +15,7 @@ import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Shared
 import Types.AboutUs exposing (AboutUsContent, aboutUsContentDecoder)
+import Utils.Metadata exposing (locale, siteName, title)
 import Utils.MicroCMS as MicroCMS exposing (getAboutUs)
 import View exposing (View)
 
@@ -59,16 +60,16 @@ head :
 head static =
     Seo.summary
         { canonicalUrlOverride = Nothing
-        , siteName = "elm-pages"
+        , siteName = siteName
         , image =
             { url = Pages.Url.external "TODO"
             , alt = "elm-pages logo"
             , dimensions = Nothing
             , mimeType = Nothing
             }
-        , description = "TODO"
-        , locale = Nothing
-        , title = "TODO title" -- metadata.title -- TODO
+        , description = "\"99 Paradise wood\" というアパレルブランドのコンセプトや私たちについて記載してあるページです。"
+        , locale = locale
+        , title = title "About Us"
         }
         |> Seo.website
 
@@ -79,7 +80,7 @@ view :
     -> StaticPayload Data RouteParams
     -> View Msg
 view maybeUrl sharedModel static =
-    { title = "HOGE", body = [ toUnstyled <| styledView static.data ] }
+    { title = title "About Us", body = [ toUnstyled <| styledView static.data ] }
 
 
 styledView : Data -> Html.Styled.Html msg
