@@ -5,6 +5,7 @@ import Head
 import LanguageTag
 import LanguageTag.Language
 import Pages.Manifest as Manifest
+import Pages.Url
 import Route
 import SiteConfig exposing (SiteConfig)
 
@@ -40,5 +41,15 @@ manifest static =
         { name = "99"
         , description = "Description"
         , startUrl = Route.Index |> Route.toPath
-        , icons = []
+        , icons =
+            [ getIcon "icon/icon-192x192.png" 192
+            , getIcon "icon/icon-192x192.png" 256
+            , getIcon "icon/icon-192x192.png" 384
+            , getIcon "icon/icon-192x192.png" 512
+            ]
         }
+
+
+getIcon : String -> Int -> Manifest.Icon
+getIcon path size =
+    Manifest.Icon (Pages.Url.external path) [ ( size, size ) ] Nothing []
