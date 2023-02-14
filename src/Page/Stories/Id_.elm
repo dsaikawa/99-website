@@ -19,6 +19,7 @@ import Page exposing (Page, PageWithState, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
 import Pages.Url
 import Shared
+import String exposing (replace)
 import Types.AboutUs exposing (AboutUs, aboutUsDecoder)
 import Types.Author exposing (Author)
 import Types.Item exposing (ItemData)
@@ -148,7 +149,7 @@ storyContentView staticData =
     div [ class "mt-3" ]
         [ div [ class "fs-1 fw-bold" ] [ text staticData.storyContent.title ]
         , img [ class "w-100 mt-3 border border-dark rounded-4", src staticData.storyContent.eyecatch ] []
-        , div [ class "mt-4 fs-4" ] [ fromUnstyled <| storyContentBody staticData.storyContent.content ]
+        , div [ class "mt-4" ] [ fromUnstyled <| storyContentBody staticData.storyContent.content ]
         ]
 
 
@@ -159,7 +160,8 @@ storyContentBody content =
             | sanitize = False
         }
         []
-        content
+    <|
+        replace "<img " "<img class=\"mw-100\" " content
 
 
 sideBarView : Data -> Html.Styled.Html msg
